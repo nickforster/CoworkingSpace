@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      color: #cecece;
+      background: #233843;
+    }
+    #content-container {
+      display: flex;
+    }
+    #form {
+      margin-left: 5rem;
+    }
+  </style>
+</head>
+<body>
+<h1>User List</h1>
+<div id="content-container">
+  <table>
+    <tbody>
+      <tr>
+        <th th:title="${'ID'}">ID</th>
+        <th th:title="${'FIRSTNAME'}">FIRSTNAME</th>
+        <th th:title="${'SURNAME'}">SURNAME</th>
+        <th th:title="${'EMAIL'}">EMAIL</th>
+        <th th:title="${'PASSWORD'}">PASSWORD</th>
+      </tr>
+      <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.firstname}"></td>
+        <td th:text="${user.surname}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.password}"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="form">
+    <form action="#" method="POST">
+      <input type="text" name="firstname" id="firstname" placeholder="Username"><br>
+      <input type="text" name="surname" id="surname" placeholder="Surname"><br>
+      <input type="password" name="password" id="password" placeholder="Password"><br>
+      <input type="email" name="email" id="email" placeholder="Email"><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+</body>
+</html>
