@@ -1,6 +1,6 @@
 package ch.zli.m223.ksh20.user.security;
 
-import ch.zli.m223.ksh20.user.roles.Role;
+import ch.zli.m223.ksh20.user.model.enums.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -15,13 +15,14 @@ public class JwtUtils {
 
     private final long expirationMs = 86400000; // 24 hours
 
-    public String generateJwtToken(String username, Role role) {
+    public String generateJwtToken(String username, Role role, Long id) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + expirationMs);
 
         return Jwts.builder()
                 .setSubject(username)
                 .claim("role", role)
+                .claim("id", id)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS512, secret)
@@ -44,6 +45,15 @@ public class JwtUtils {
                 .getBody();
 
         return claims.get("role", String.class);
+    }
+
+    public Long getIdFromJwtToken(String token) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(secret)
+                .parseClaimsJws(token)
+                .getBody();
+
+        return claims.get("id", Long.class);
     }
 
     public boolean validateJwtToken(String token) {

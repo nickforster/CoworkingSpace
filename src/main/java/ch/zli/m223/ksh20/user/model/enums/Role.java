@@ -1,4 +1,4 @@
-package ch.zli.m223.ksh20.user.roles;
+package ch.zli.m223.ksh20.user.model.enums;
 
 public enum Role {
     GUEST,
