@@ -30,7 +30,7 @@ public class UserRestController {
     @PostMapping("/login")
     ResponseEntity<?> login(@RequestBody UserDto u) {
         User user = userService.authorize(u.getEmail(), u.getPassword());
-        String token = jwtUtils.generateJwtToken(user.getEmail(), user.getRole());
+        String token = jwtUtils.generateJwtToken(user.getEmail(), user.getRole(), user.getId());
 
         return ResponseEntity.ok(new JwtResponse(token));
     }

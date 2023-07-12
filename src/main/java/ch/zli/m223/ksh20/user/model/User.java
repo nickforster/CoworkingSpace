@@ -1,6 +1,6 @@
 package ch.zli.m223.ksh20.user.model;
 
-import ch.zli.m223.ksh20.user.roles.Role;
+import ch.zli.m223.ksh20.user.model.enums.Role;
 import jakarta.persistence.*;
 
 @Entity
