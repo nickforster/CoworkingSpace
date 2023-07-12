@@ -17,4 +17,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
         if (u.isPresent() && u.get().getPassword().equals(password)) return u.get();
         return null;
     }
+
+    Optional<User> updateUserById(User user);
 }

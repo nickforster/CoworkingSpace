@@ -36,7 +36,32 @@ public class UserRestController {
     }
 
     @GetMapping("/list")
-    List<UserDto> getUserList() {
-        return userService.getUserList().stream().map(UserDto::new).collect(Collectors.toList());
+    List<UserDto> getUserList(
+            @RequestHeader("Authorization") String header
+    ) {
+        String token = header.split(" ")[1].trim();
+
+        return userService.getUserList(token).stream().map(UserDto::new).collect(Collectors.toList());
+    }
+
+    @DeleteMapping("/{id}/delete")
+    void deleteUser(
+            @PathVariable Long id,
+            @RequestHeader("Authorization") String header
+    ) {
+        String token = header.split(" ")[1].trim();
+
+        userService.deleteUser(id, token);
+    }
+
+    @PutMapping("/{id}/update")
+    User updateUser(
+            @PathVariable Long id,
+            @RequestBody UserDto userDto,
+            @RequestHeader("Authorization") String header
+    ) {
+        String token = header.split(" ")[1].trim();
+
+        return userService.updateUser(id, userDto, token);
     }
 }
