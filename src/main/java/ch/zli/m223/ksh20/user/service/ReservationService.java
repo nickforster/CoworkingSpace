@@ -42,7 +42,6 @@ public class ReservationService {
                 }
             }
 
-            // TODO: 12.07.2023 validation
             return reservationRepository.save(reservation);
         }
 
@@ -55,7 +54,6 @@ public class ReservationService {
 
         reservation.setAccepted(reservation.isAccepted());
 
-        // TODO: 12.07.2023 validation
         return reservationRepository.save(reservation);
     }
 
