@@ -74,6 +74,17 @@ public class ReservationService {
         if (!jwtUtils.validateJwtToken(token)) throw new UnauthorizedException();
         if (Role.valueOf(jwtUtils.getRoleFromJwtToken(token)) == Role.GUEST) throw new UnauthorizedException();
 
+        if (Role.valueOf(jwtUtils.getRoleFromJwtToken(token)) == Role.MEMBER) {
+            Reservation r = reservationRepository.getReferenceById(id);
+
+            if (Objects.equals(r.getUser().getId(), jwtUtils.getIdFromJwtToken(token))) {
+                reservationRepository.deleteById(id);
+                return;
+            } else {
+                throw new UnauthorizedException();
+            }
+        }
+
         reservationRepository.deleteById(id);
     }
 
