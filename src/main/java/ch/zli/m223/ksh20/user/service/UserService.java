@@ -1,7 +1,6 @@
 package ch.zli.m223.ksh20.user.service;
 
 import ch.zli.m223.ksh20.user.controller.rest.dto.UserDto;
-import ch.zli.m223.ksh20.user.model.Reservation;
 import ch.zli.m223.ksh20.user.model.User;
 import ch.zli.m223.ksh20.user.model.enums.Role;
 import ch.zli.m223.ksh20.user.repository.UserRepository;
@@ -68,6 +67,10 @@ public class UserService {
 
     public void deleteUser(Long id, String token) {
         if (!jwtUtils.validateJwtToken(token)) throw new UnauthorizedException();
+        if (Objects.equals(jwtUtils.getIdFromJwtToken(token), id)) {
+            userRepository.deleteById(id);
+            return;
+        }
         if (Role.valueOf(jwtUtils.getRoleFromJwtToken(token)) != Role.ADMIN) throw new UnauthorizedException();
 
         userRepository.deleteById(id);
