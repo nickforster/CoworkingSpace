@@ -78,14 +78,19 @@ public class UserService {
 
     public User updateUser(Long id, UserDto userDto, String token) {
         if (!jwtUtils.validateJwtToken(token)) throw new UnauthorizedException();
-        if (Role.valueOf(jwtUtils.getRoleFromJwtToken(token)) != Role.ADMIN) throw new UnauthorizedException();
+        if (Role.valueOf(jwtUtils.getRoleFromJwtToken(token)) == Role.GUEST) throw new UnauthorizedException();
+
 
         User u = new User(userDto.getFirstname(), userDto.getLastname(), userDto.getEmail(), userDto.getPassword());
         u.setRole(userDto.getRole());
         u.setId(id);
 
-        return userRepository.save(u);
-
-        // return userRepository.updateUserById(u).orElse(null);
+        if (Objects.equals(jwtUtils.getIdFromJwtToken(token), id)
+                || Role.valueOf(jwtUtils.getRoleFromJwtToken(token)) == Role.ADMIN
+        ) {
+            return userRepository.save(u);
+        } else {
+            throw new UnauthorizedException();
+        }
     }
 }
