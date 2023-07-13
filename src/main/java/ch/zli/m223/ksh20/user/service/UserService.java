@@ -84,7 +84,8 @@ public class UserService {
         u.setRole(userDto.getRole());
         u.setId(id);
 
-        Optional<User> user = userRepository.updateUserById(u);
-        return user.orElse(null);
+        return userRepository.save(u);
+
+        // return userRepository.updateUserById(u).orElse(null);
     }
 }

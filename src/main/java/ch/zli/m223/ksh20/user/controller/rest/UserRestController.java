@@ -2,9 +2,12 @@ package ch.zli.m223.ksh20.user.controller.rest;
 
 import ch.zli.m223.ksh20.user.controller.rest.dto.UserDto;
 import ch.zli.m223.ksh20.user.model.User;
+import ch.zli.m223.ksh20.user.model.enums.Role;
 import ch.zli.m223.ksh20.user.security.JwtResponse;
 import ch.zli.m223.ksh20.user.security.JwtUtils;
 import ch.zli.m223.ksh20.user.service.UserService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,13 +25,22 @@ public class UserRestController {
     @Autowired
     private JwtUtils jwtUtils;
 
+    boolean firstUser = true;
+
     @PostMapping("/register")
-    User register(@RequestBody UserDto u) {
-        return userService.addUser(new User(u.getFirstname(), u.getLastname(), u.getEmail(), u.getPassword()));
+    @ApiOperation("Register a new user")
+    User register(@RequestBody @ApiParam("User data") UserDto u) {
+        User user = new User(u.getFirstname(), u.getLastname(), u.getEmail(), u.getPassword());
+        if (firstUser) {
+            user.setRole(Role.ADMIN);
+            firstUser = false;
+        }
+        return userService.addUser(user);
     }
 
     @PostMapping("/login")
-    ResponseEntity<?> login(@RequestBody UserDto u) {
+    @ApiOperation("Login as member or admin")
+    ResponseEntity<?> login(@RequestBody @ApiParam("User data") UserDto u) {
         User user = userService.authorize(u.getEmail(), u.getPassword());
         String token = jwtUtils.generateJwtToken(user.getEmail(), user.getRole(), user.getId());
 
@@ -36,8 +48,9 @@ public class UserRestController {
     }
 
     @GetMapping("/list")
+    @ApiOperation("List all users")
     List<UserDto> getUserList(
-            @RequestHeader("Authorization") String header
+            @RequestHeader("Authorization") @ApiParam("Authorization header with jwt token") String header
     ) {
         String token = header.split(" ")[1].trim();
 
@@ -45,9 +58,10 @@ public class UserRestController {
     }
 
     @DeleteMapping("/{id}/delete")
+    @ApiOperation("Delete a user")
     void deleteUser(
-            @PathVariable Long id,
-            @RequestHeader("Authorization") String header
+            @PathVariable @ApiParam("Id of the user") Long id,
+            @RequestHeader("Authorization") @ApiParam("Authorization header with jwt token") String header
     ) {
         String token = header.split(" ")[1].trim();
 
@@ -55,10 +69,11 @@ public class UserRestController {
     }
 
     @PutMapping("/{id}/update")
+    @ApiOperation("Update a user")
     User updateUser(
-            @PathVariable Long id,
-            @RequestBody UserDto userDto,
-            @RequestHeader("Authorization") String header
+            @PathVariable @ApiParam("Id of the user") Long id,
+            @RequestBody @ApiParam("User data") UserDto userDto,
+            @RequestHeader("Authorization") @ApiParam("Authorization header with jwt token") String header
     ) {
         String token = header.split(" ")[1].trim();
 

@@ -93,8 +93,10 @@ public class ReservationService {
             }
         }
 
-        Optional<Reservation> updatedReservation = reservationRepository.updateReservationById(r);
-        return updatedReservation.orElse(null);
+        return  reservationRepository.save(r);
+
+        // Optional<Reservation> updatedReservation = reservationRepository.updateReservationById(r);
+        // return updatedReservation.orElse(null);
     }
 
     public Reservation acceptReservation(Long id, String token) {
@@ -104,7 +106,11 @@ public class ReservationService {
         List<Reservation> reservations = reservationRepository.findAll();
 
         for (Reservation r : reservations) {
-            if (Objects.equals(r.getId(), id)) return reservationRepository.updateReservationById(r).orElse(null);
+            if (Objects.equals(r.getId(), id)) {
+                r.setAccepted(true);
+                 return reservationRepository.save(r);
+            }
+            // if (Objects.equals(r.getId(), id)) return reservationRepository.updateReservationById(r).orElse(null);
         }
 
         return null;
