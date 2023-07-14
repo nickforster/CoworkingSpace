@@ -103,9 +103,6 @@ public class ReservationService {
         }
 
         return  reservationRepository.save(r);
-
-        // Optional<Reservation> updatedReservation = reservationRepository.updateReservationById(r);
-        // return updatedReservation.orElse(null);
     }
 
     public Reservation acceptReservation(Long id, String token) {
@@ -119,7 +116,6 @@ public class ReservationService {
                 r.setAccepted(true);
                  return reservationRepository.save(r);
             }
-            // if (Objects.equals(r.getId(), id)) return reservationRepository.updateReservationById(r).orElse(null);
         }
 
         return null;

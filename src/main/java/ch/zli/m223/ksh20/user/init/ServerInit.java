@@ -1,9 +1,7 @@
 package ch.zli.m223.ksh20.user.init;
 
-import ch.zli.m223.ksh20.user.model.Reservation;
 import ch.zli.m223.ksh20.user.model.User;
 import ch.zli.m223.ksh20.user.model.enums.Role;
-import ch.zli.m223.ksh20.user.repository.ReservationRepository;
 import ch.zli.m223.ksh20.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -16,7 +14,7 @@ public class ServerInit implements ApplicationRunner {
     private UserRepository userRepository;
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         User u = new User("admin", "admin", "admin", "admin");
         u.setRole(Role.ADMIN);
         userRepository.insertUser(u);

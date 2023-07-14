@@ -1,7 +1,6 @@
 package ch.zli.m223.ksh20.user.controller.rest.dto;
 
 import ch.zli.m223.ksh20.user.model.Reservation;
-import ch.zli.m223.ksh20.user.model.User;
 import ch.zli.m223.ksh20.user.model.enums.Duration;
 
 import java.time.LocalDate;

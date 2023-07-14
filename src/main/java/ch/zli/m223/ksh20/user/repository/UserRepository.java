@@ -10,13 +10,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
         return save(user);
     }
 
-    public Optional<User> findByEmail(String email);
-
-    default User authorize(String email, String password) {
-        Optional<User> u = findByEmail(email);
-        if (u.isPresent() && u.get().getPassword().equals(password)) return u.get();
-        return null;
-    }
-
-    // Optional<User> updateUserById(User user);
+    Optional<User> findByEmail(String email);
 }

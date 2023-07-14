@@ -28,7 +28,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n\"firstName\": \"Jas\",\r\n\"lastName\": \"trfax\",\r\n\"email\": \"max@dffdd.com\",\r\n\"password\": \"dhfaldfha\"\r\n}",
+							"raw": "\r\n{\r\n\"firstname\": \"Jas\",\r\n\"lastname\": \"trfax\",\r\n\"email\": \"max@dffdd.com\",\r\n\"password\": \"dhfaldfha\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -70,7 +70,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n\"firstName\": \"max\",\r\n\"lastName\": \"trax\",\r\n\"email\": \"max@trax.com\",\r\n\"password\": \"dhfaldfha\"\r\n}",
+							"raw": "\r\n{\r\n\"firstname\": \"max\",\r\n\"lastname\": \"trax\",\r\n\"email\": \"max@trax.com\",\r\n\"password\": \"dhfaldfha\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -112,7 +112,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"max\",\r\n    \"lastName\": \"trax\",\r\n    \"email\": \"max@traxi.com\",\r\n    \"password\": \"\"\r\n}",
+							"raw": "{\r\n    \"firstname\": \"max\",\r\n    \"lastname\": \"trax\",\r\n    \"email\": \"max@traxi.com\",\r\n    \"password\": \"\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -154,7 +154,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n\"firstName\": \"max\",\r\n\"lastName\": \"trax\",\r\n\"email\": \"\",\r\n\"password\": \"ycxvyxvc\"\r\n}",
+							"raw": "\r\n{\r\n\"firstname\": \"max\",\r\n\"lastname\": \"trax\",\r\n\"email\": \"\",\r\n\"password\": \"ycxvyxvc\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -867,7 +867,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n\"firstName\": \"hens\",\r\n\"lastName\": \"jens\",\r\n\"email\": \"hens@jens.com\",\r\n\"password\": \"Ze7rh7hh\"\r\n}",
+							"raw": "\r\n{\r\n\"firstname\": \"hens\",\r\n\"lastname\": \"jens\",\r\n\"email\": \"hens@jens.com\",\r\n\"password\": \"Ze7rh7hh\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -917,7 +917,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n\"firstName\": \"hens\",\r\n\"lastName\": \"jens\",\r\n\"email\": \"hens@jenns.com\",\r\n\"password\": \"Ze7rh7hh\"\r\n}",
+							"raw": "\r\n{\r\n\"firstname\": \"hens\",\r\n\"lastname\": \"jens\",\r\n\"email\": \"hens@jenns.com\",\r\n\"password\": \"Ze7rh7hh\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1095,7 +1095,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n\"firstName\": \"henss\",\r\n\"lastName\": \"jens\",\r\n\"email\": \"hens@jens.com\",\r\n\"password\": \"Ze7rh7hh\"\r\n}",
+							"raw": "\r\n{\r\n\"firstname\": \"henss\",\r\n\"lastname\": \"jens\",\r\n\"email\": \"hens@jens.com\",\r\n\"password\": \"Ze7rh7hh\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

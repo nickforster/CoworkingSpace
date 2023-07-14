@@ -37,10 +37,6 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id) {
-        return userRepository.getReferenceById(id);
-    }
-
     public User addUser(User user) {
         if (user.getEmail() == null ||
                 user.getEmail().isBlank() ||
